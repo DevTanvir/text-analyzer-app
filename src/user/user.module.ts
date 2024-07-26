@@ -7,11 +7,10 @@ import { UserController } from './controllers/user.controller';
 import { User } from './entities/user.entity';
 import { UserRepository } from './repositories/user.repository';
 import { UserService } from './services/user.service';
-import { UserAclService } from './services/user-acl.service';
 
 @Module({
   imports: [SharedModule, TypeOrmModule.forFeature([User])],
-  providers: [UserService, JwtAuthStrategy, UserAclService, UserRepository],
+  providers: [UserService, JwtAuthStrategy, UserRepository],
   controllers: [UserController],
   exports: [UserService],
 })

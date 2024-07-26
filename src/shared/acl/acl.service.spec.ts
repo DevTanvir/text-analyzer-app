@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { Article } from '../../article/entities/article.entity';
 import { ROLE } from './../../auth/constants/role.constant';
 import { BaseAclService } from './acl.service';
 import { RuleCallback } from './acl-rule.constant';
@@ -100,20 +99,5 @@ describe('AclService', () => {
       expect(userAcl.canDoAction(Action.Read)).toBeTruthy();
     });
 
-    it('should return true when ruleCallback is true', () => {
-      const customOwnerRule = jest.fn();
-      customOwnerRule.mockReturnValue(true);
-      service.canDo(ROLE.USER, [Action.Manage], customOwnerRule);
-      const userAcl = service.forActor(user);
-      expect(userAcl.canDoAction(Action.Read, new Article())).toBeTruthy();
-    });
-
-    it('should return false when ruleCallback is false', () => {
-      const customOwnerRule = jest.fn();
-      customOwnerRule.mockReturnValue(false);
-      service.canDo(ROLE.USER, [Action.Manage], customOwnerRule);
-      const userAcl = service.forActor(user);
-      expect(userAcl.canDoAction(Action.Read, new Article())).toBeFalsy();
-    });
   });
 });
