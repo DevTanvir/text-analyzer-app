@@ -306,6 +306,7 @@ describe('UserService', () => {
         email: 'randomUser@random.com',
         createdAt: currentDate,
         updatedAt: currentDate,
+        texts: [],
 
       };
 
@@ -321,6 +322,7 @@ describe('UserService', () => {
         email: 'randomUser@random.com',
         createdAt: currentDate,
         updatedAt: currentDate,
+        texts: [],
       };
 
       jest

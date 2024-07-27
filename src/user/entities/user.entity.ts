@@ -2,10 +2,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
+
+import { Text } from '../../texts/entities/text.entity';
 
 @Entity('users')
 export class User {
@@ -37,4 +40,11 @@ export class User {
 
   @UpdateDateColumn({ name: 'updatedAt', nullable: true })
   updatedAt: Date;
+
+  @OneToMany(() => Text, (text) => text.user, {
+    nullable: true,
+    eager: true,
+    cascade: true,
+  })
+  texts?: Text[];
 }
