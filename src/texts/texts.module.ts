@@ -10,6 +10,9 @@ import { TextService } from './services/text.service';
 @Module({
   imports: [SharedModule, TypeOrmModule.forFeature([Text])],
   controllers: [TextController],
-  providers: [TextService, TextRepository],
+  providers: [
+    TextService, 
+    TextRepository,
+  ],
 })
 export class TextsModule {}
