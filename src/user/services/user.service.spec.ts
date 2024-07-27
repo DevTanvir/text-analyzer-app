@@ -306,8 +306,7 @@ describe('UserService', () => {
         email: 'randomUser@random.com',
         createdAt: currentDate,
         updatedAt: currentDate,
-        texts: [],
-
+        articles: [],
       };
 
       mockedRepository.getById.mockResolvedValue(foundUser);
@@ -322,7 +321,7 @@ describe('UserService', () => {
         email: 'randomUser@random.com',
         createdAt: currentDate,
         updatedAt: currentDate,
-        texts: [],
+        articles: [],
       };
 
       jest

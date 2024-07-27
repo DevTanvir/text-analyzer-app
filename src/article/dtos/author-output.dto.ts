@@ -1,8 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
 
-export class TextOutput {
-  @ApiProperty()
+export class AuthorOutput {
   @Expose()
-  count: number;
+  @ApiProperty()
+  id: number;
+
+  @Expose()
+  @ApiProperty()
+  name: string;
 }

@@ -1,9 +1,16 @@
 {
-  "name": "text-analyzer-app",
+  "name": "nestjs-starter-rest-api",
   "private": true,
   "version": "1.0.0",
-  "description": "Generic text analyzing app",
+  "description": "NestJS Starter REST API Repository",
   "license": "MIT",
+  "contributors": [
+    "Yash Murty <yashmurty@gmail.com> (https://github.com/yashmurty)",
+    "S M Asad Rahman<asad.rahman@monstar-lab.com> (https://github.com/asad-mlbd)",
+    "Tanveer Hassan <mailtanveerhassan@gmail.com> (https://github.com/war1oc)",
+    "Saad Bin Amjad <saadbinamjad@gmail.com> (https://github.com/Saad-Amjad)",
+    "Sivan Payyadakath <sivanp77@gmail.com > (https://github.com/sivanpayyadakath)"
+  ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -43,7 +50,6 @@
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^10.3.9",
     "@nestjs/swagger": "^7.3.1",
-    "@nestjs/throttler": "^6.0.0",
     "@nestjs/typeorm": "^10.0.2",
     "@types/uuid": "^9.0.8",
     "bcrypt": "^5.1.1",

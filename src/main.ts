@@ -17,8 +17,8 @@ async function bootstrap() {
 
   /** Swagger configuration*/
   const options = new DocumentBuilder()
-    .setTitle('Text Analyzer App')
-    .setDescription('Text analyzer API description')
+    .setTitle('Nestjs API starter')
+    .setDescription('Nestjs API description')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
