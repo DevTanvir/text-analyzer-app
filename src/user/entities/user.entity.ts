@@ -8,7 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Article } from '../../article/entities/article.entity';
+import { Text } from '../../texts/entities/text.entity';
 
 @Entity('users')
 export class User {
@@ -41,6 +41,10 @@ export class User {
   @UpdateDateColumn({ name: 'updatedAt', nullable: true })
   updatedAt: Date;
 
-  @OneToMany(() => Article, (article) => article.author)
-  articles: Article[];
+  @OneToMany(() => Text, (text) => text.user, {
+    nullable: true,
+    eager: true,
+    cascade: true,
+  })
+  texts?: Text[];
 }
