@@ -13,6 +13,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { Throttle } from '@nestjs/throttler';
 
 import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
 import {
@@ -163,6 +164,8 @@ export class TextController {
   @ApiBearerAuth()
   @UseInterceptors(ClassSerializerInterceptor)
   @Post('longest-word')
+  // over-riding global throttle method
+  @Throttle({ default: { limit: 3, ttl: 60000 } })
   @ApiOperation({
     summary: 'Get longest word in paragraphs API',
   })
