@@ -1,3 +1,4 @@
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 
@@ -13,6 +14,11 @@ describe('TextsService', () => {
 
   const mockedRepository = {
     getById: jest.fn(),
+  };
+
+  const mockedCacheManager = {
+    get: jest.fn(),
+    set: jest.fn(),
   };
 
   const mockedLogger = { setContext: jest.fn(), log: jest.fn() };
@@ -32,6 +38,10 @@ describe('TextsService', () => {
         },
         { provide: TextRepository, useValue: mockedRepository },
         { provide: AppLogger, useValue: mockedLogger },
+        {
+          provide: CACHE_MANAGER,
+          useValue: mockedCacheManager,
+        },
       ],
     }).compile();
 
@@ -104,7 +114,7 @@ describe('TextsService', () => {
   describe('countParagraphs', () => {
     it('should count paragraphs correctly', async () => {
       const text =
-        'This the 1st part of the paragraph. \n\nThis the 2nd part of the paragraph. \n\nThis the 3rd part of the paragraph.';
+        'This the 1st part of the paragraph. \nThis the 2nd part of the paragraph. \nThis the 3rd part of the paragraph.';
       const result = await service.countParagraphs(ctx, text);
       expect(result).toEqual(3);
     });
@@ -124,7 +134,7 @@ describe('TextsService', () => {
   describe('longestWordInParagraphs', () => {
     it('should count the longest word in a paragraph correctly', async () => {
       const text =
-        'This the 1st part of the paragraph. \n\nThis the 2nd part of the paragraph. \n\nThis the 3rd part of the paragraph.';
+        'This the 1st part of the paragraph. \nThis the 2nd part of the paragraph. \nThis the 3rd part of the paragraph.';
       const result = await service.longestWordInParagraphs(ctx, text);
       expect(result).toEqual({
         paragraphs: 3,

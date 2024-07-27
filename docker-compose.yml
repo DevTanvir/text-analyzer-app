@@ -27,6 +27,7 @@ services:
       DEFAULT_ADMIN_USER_PASSWORD: ${DEFAULT_ADMIN_USER_PASSWORD}
     depends_on:
       - pgsqldb
+      - redis
 
   pgsqldb:
     image: postgres:16.3
@@ -46,6 +47,16 @@ services:
     depends_on:
       - pgsqldb
 
+  redis:
+    container_name: cache
+    image: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+
 volumes:
   node_modules:
   pgsqldata:
+  redis:
+    driver: local
