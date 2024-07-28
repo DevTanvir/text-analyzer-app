@@ -29,7 +29,7 @@ export const resetDBBeforeTest = async (): Promise<void> => {
     password: 'example',
     database: 'postgres',
   });
-
+  
   await connection.query(`drop database if exists ${TEST_DB_NAME}`);
   await connection.query(`create database ${TEST_DB_NAME}`);
 
