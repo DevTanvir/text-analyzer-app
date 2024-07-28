@@ -1,5 +1,9 @@
 ## Text Analyzer App
 
+[![build](https://github.com/monstar-lab-oss/nestjs-starter-rest-api/actions/workflows/build-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/monstar-lab-oss/nestjs-starter-rest-api/actions/workflows/build-workflow.yml)
+[![tests](https://github.com/monstar-lab-oss/nestjs-starter-rest-api/actions/workflows/tests-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/monstar-lab-oss/nestjs-starter-rest-api/actions/workflows/tests-workflow.yml)
+
+
 For building this app I've used an open-source nestjs starter template which I directly contributed to. This is a fast and light-weight template for starting new nodejs projects with nestjs framework.
 
 This app has the following outline:
@@ -9,7 +13,7 @@ This app has the following outline:
 - Dockerized
 - Swagger UI
 
-Below are all the steps necessary to run the app locally, I would prefer only the Docker steps, but you run it without docker as well.
+Below are all the steps necessary to run the app locally, I would prefer only the Docker steps, but you can run it without docker as well.
 
 ## Installation
 
@@ -133,7 +137,7 @@ $ npm run migration:revert
 # unit tests
 $ npm run test
 
-# to see the test coverage
+# to run the test coverage use the below command, then to see all the coverage open the html file from root-directory/coverage/lcov-report/index.tml or you can check your console as well.
 $ npm run test:cov
 ```
 
