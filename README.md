@@ -2,7 +2,7 @@
 
 [![build](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/build-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/build-workflow.yml)
 [![tests](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/tests-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/tests-workflow.yml)
-
+[![Coverage Status](https://coveralls.io/repos/github/DevTanvir/text-analyzer-app/badge.svg)](https://coveralls.io/github/DevTanvir/text-analyzer-app)
 Text analyzing app capable of performing various string based operations, with Auth and User module.
 
 This app has the following outline:
