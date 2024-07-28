@@ -5,6 +5,7 @@ import { plainToClass } from 'class-transformer';
 
 import { AppLogger } from '../../shared/logger/logger.service';
 import { RequestContext } from '../../shared/request-context/request-context.dto';
+import { CreateUserInput } from '../../user/dtos/user-create-input.dto';
 import { UserOutput } from '../../user/dtos/user-output.dto';
 import { UserService } from '../../user/services/user.service';
 import { ROLE } from '../constants/role.constant';
@@ -106,5 +107,30 @@ export class AuthService {
     return plainToClass(AuthTokenOutput, authToken, {
       excludeExtraneousValues: true,
     });
+  }
+
+  async googleLogin(req: any) {
+    if (!req.user) {
+      return 'No user from google'
+    }
+
+    const user = new CreateUserInput();
+    const ctx = new RequestContext();
+
+    user.roles = [ROLE.USER];
+    user.isAccountDisabled = false;
+    user.password = req.user.email;
+    user.username = req.user.email;
+    user.email = req.user.email;
+    user.name = req.user.firstName + ' ' + req.user.lastName;
+
+    await this.userService.createUser(ctx, user);
+    
+    return {
+      message: 'User information from google',
+      user: req.user
+    }
+
+
   }
 }

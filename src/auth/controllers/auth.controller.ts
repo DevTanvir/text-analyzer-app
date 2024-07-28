@@ -2,12 +2,14 @@ import {
   Body,
   ClassSerializerInterceptor,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation,ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import {
@@ -26,7 +28,7 @@ import { AuthTokenOutput } from '../dtos/auth-token-output.dto';
 import { JwtRefreshGuard } from '../guards/jwt-refresh.guard';
 import { LocalAuthGuard } from '../guards/local-auth.guard';
 import { AuthService } from '../services/auth.service';
-
+ 
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
@@ -103,4 +105,17 @@ export class AuthController {
     const authToken = await this.authService.refreshToken(ctx);
     return { data: authToken, meta: {} };
   }
+
+  @Get('google')
+  @UseGuards(AuthGuard('google'))
+  async googleAuth(@ReqContext() req: any) {
+    console.log(req);
+  }
+
+  @Get('redirect')
+  @UseGuards(AuthGuard('google'))
+  googleAuthRedirect(@ReqContext() req: any) {
+    return this.authService.googleLogin(req)
+  }
+
 }

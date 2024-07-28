@@ -3,17 +3,32 @@
 [![build](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/build-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/build-workflow.yml)
 [![tests](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/tests-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/tests-workflow.yml)
 
-
-For building this app I've used an open-source nestjs starter template which I directly contributed to. This is a fast and light-weight template for starting new nodejs projects with nestjs framework.
+Text analyzing app capable of performing various string based operations, with Auth and User module.
 
 This app has the following outline:
 
 - Monolithic Project
 - REST API
-- Dockerized
+- API Caching
+- API Throttling
+- SSO
 - Swagger UI
+- Dockerized
 
-Below are all the steps necessary to run the app locally, I would prefer only the Docker steps, but you can run it without docker as well.
+
+## Overview
+
+For building this app I've used an OSS template in which I am a core contributor. This is a fast and light-weight template for starting new nodejs projects with nestjs framework. 
+Following the TDD method, I've added unit-tests, and developed feature onwards. I've also added Redis caching, Nests API Throttling and Google SSO to this project. Github Actions are include as well. I used Watson for logging every requests on the server-side console. Attached Test-coverage report.
+
+What I couldn't add:
+
+- Log visualization with AWS Cloudwatch. I tried to connect my existing logging system Watson with AWS Cloudwatch but for some payment related issue, I was unable to integrate it. AWS would not let me access cloudwatch.
+
+
+Moving forward!
+
+Below are all the steps necessary to run the app locally, I would prefer only the Docker steps, but you can run it without docker as well. Please contact me at tanveer.cyborg@gmail.com for any questions or clarifications. 
 
 ## Installation
 
@@ -130,6 +145,11 @@ $ npm run migration:run
 # to revert any migration
 $ npm run migration:revert
 ```
+
+## Single Sign On (SSO) Strategy
+
+To use single sign on feature, while the server is running, click <a href="http://localhost:3000/api/v1/auth/google" target="blank">SSO</a> to trigger the Google Authentication system.
+
 
 ## Test
 

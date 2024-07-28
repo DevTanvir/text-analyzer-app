@@ -18,7 +18,7 @@ import { UserModule } from './user/user.module';
     AuthModule,
     TextsModule,
     ThrottlerModule.forRoot([{
-      ttl: 60000,
+      ttl: 60000, // 1 minute
       limit: 10,
     }]),
     CacheModule.register({
@@ -26,7 +26,7 @@ import { UserModule } from './user/user.module';
       store: redisStore,
       host: process.env.REDIS_HOST,
       port: process.env.REDIS_PORT,
-      ttl: 3600,
+      ttl: 3600000, // 1 hour
       max: 10,
     }),
   ],
@@ -36,7 +36,7 @@ import { UserModule } from './user/user.module';
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
-    }
+    },
   ],
 })
 export class AppModule {}
