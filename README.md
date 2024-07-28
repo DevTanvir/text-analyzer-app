@@ -3,6 +3,8 @@
 [![build](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/build-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/build-workflow.yml)
 [![tests](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/tests-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/tests-workflow.yml)
 [![Coverage Status](https://coveralls.io/repos/github/DevTanvir/text-analyzer-app/badge.svg)](https://coveralls.io/github/DevTanvir/text-analyzer-app)
+
+
 Text analyzing app capable of performing various string based operations, with Auth and User module.
 
 This app has the following outline:
@@ -18,12 +20,12 @@ This app has the following outline:
 
 ## Overview
 
-For building this app I've used an OSS template in which I am a core contributor. This is a fast and light-weight template for starting new nodejs projects with nestjs framework. 
-Following the TDD method, I've added unit-tests, and developed feature onwards. I've also added Redis caching, Nests API Throttling and Google SSO to this project. Github Actions are include as well. I used Watson for logging every requests on the server-side console. Attached Test-coverage report.
+For building this app I've used an OSS template in which I am a core contributor. This is a fast and light-weight template for starting new Node.js projects with Nestjs framework. 
+Following the TDD method, I've added unit-tests, and developed feature onwards. I've also added Redis caching, Nests API Throttling and Google SSO to this project. Github Actions are included as well. I used Watson for logging every requests on the server-side console. Attached Test-coverage report.
 
 What I couldn't add:
 
-- Log visualization with AWS Cloudwatch. I tried to connect my existing logging system Watson with AWS Cloudwatch but for some payment related issue, I was unable to integrate it. AWS would not let me access cloudwatch.
+- Log visualization with AWS Cloudwatch. I tried to connect my existing logging system Watson with AWS Cloudwatch but for some payment related issue, I was unable to integrate it. AWS would not let me access CloudWatch.
 
 
 Moving forward!
@@ -62,7 +64,7 @@ JWT_PUBLIC_KEY_BASE64="(long base64 content)"
 JWT_PRIVATE_KEY_BASE64="(long base64 content)"
 ```
 
-NOTE: if you are on a windows OS you might need extra steps to convert these jwt keys to base64 content. (e.g. you can use git bash to covert the keys)
+NOTE: if you are on a Windows OS you might need extra steps to convert these JWT keys to base64 content. (e.g. you can use git bash to covert the keys)
 
 ### Without docker
 
@@ -72,7 +74,7 @@ $ ssh-keygen -t rsa -b 2048 -m PEM -f jwtRS256.key
 $ openssl rsa -in jwtRS256.key -pubout -outform PEM -out jwtRS256.key.pub
 ```
 
-You may save these key files in `./local` directory as it is ignored in git.
+You may save these key files in `./local` directory, as it is ignored in git.
 
 Encode keys to base64:
 
@@ -88,7 +90,7 @@ Must enter the base64 of the key files in `.env`:
 JWT_PUBLIC_KEY_BASE64=BASE64_OF_JWT_PUBLIC_KEY
 JWT_PRIVATE_KEY_BASE64=BASE64_OF_JWT_PRIVATE_KEY
 ```
-NOTE: if you are on a windows OS you might need extra steps to convert these jwt keys to base64 content. (e.g. you can use git bash to covert the keys)
+NOTE: if you are on a windows OS you might need extra steps to convert these JWT keys to base64 content. (e.g. you can use git bash to covert the keys)
 
 ## Running the app
 
@@ -113,7 +115,7 @@ After the server starts go to your browser and type-in localhost:3000/swagger. T
 
 ### Local
 
-NOTE: To run the server without Docker we need this pre-requisite:
+NOTE: To run the server without Docker we need this prerequisite:
 
 - Postgres server running
 
