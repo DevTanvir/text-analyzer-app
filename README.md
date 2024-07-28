@@ -1,6 +1,6 @@
 ## Text Analyzer App
 
-For building this app I've used an open-source nestjs starter template which I directly contributed to. This is a fast, light-weight template with some very helpful built-in features.
+For building this app I've used an open-source nestjs starter template which I directly contributed to. This is a fast and light-weight template for starting new nodejs projects with nestjs framework.
 
 This app has the following outline:
 
@@ -9,18 +9,23 @@ This app has the following outline:
 - Dockerized
 - Swagger UI
 
+Below are all the steps necessary to run the app locally, I would prefer only the Docker steps, but you run it without docker as well.
+
 ## Installation
 
 Note: when using docker, all the `npm` commands can also be performed using `./scripts/npm` (for example `./scripts/npm install`).
+
 This script allows you to run the same commands inside the same environment and versions than the service, without relying on what is installed on the host.
+
+OK start with this command first.
 
 ```bash
 $ npm install
 ```
 
-Create a `.env` file from the template `.env.template` file.
+Create a `.env` file from the template `.env.template` file which you can find on the root directory.
 
-Generate public and private key pair for jwt authentication:
+Generate PUBLIC and PRIVATE key pair for jwt authentication:
 
 ### With docker
 
@@ -37,6 +42,8 @@ To setup the JWT keys, please add the following values to your .env file:
 JWT_PUBLIC_KEY_BASE64="(long base64 content)"
 JWT_PRIVATE_KEY_BASE64="(long base64 content)"
 ```
+
+NOTE: if you are on a windows OS you might need extra steps to convert these jwt keys to base64 content. (e.g. you can use git bash to covert the keys)
 
 ### Without docker
 
@@ -62,14 +69,32 @@ Must enter the base64 of the key files in `.env`:
 JWT_PUBLIC_KEY_BASE64=BASE64_OF_JWT_PUBLIC_KEY
 JWT_PRIVATE_KEY_BASE64=BASE64_OF_JWT_PRIVATE_KEY
 ```
+NOTE: if you are on a windows OS you might need extra steps to convert these jwt keys to base64 content. (e.g. you can use git bash to covert the keys)
 
 ## Running the app
 
-We can run the project with or without docker.
+We can run the project with or without docker. (docker preferred)
+
+
+### Docker
+
+```bash
+# build image
+$ docker build -t text-analyzer-app .
+
+# run container from image
+$ docker run -p 3000:3000 --volume 'pwd':/usr/src/app --network --env-file .env text-analyzer-app
+
+# run using docker compose
+$ docker compose up
+```
+
+After the server starts go to your browser and type-in localhost:3000/swagger. There you can see the list of APIs to be used. but before that you need to run migrations! check below for migrations steps.
+
 
 ### Local
 
-To run the server without Docker we need this pre-requisite:
+NOTE: To run the server without Docker we need this pre-requisite:
 
 - Postgres server running
 
@@ -82,24 +107,25 @@ $ npm run start
 # watch mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
 ```
 
-### Docker
+After the server starts go to your browser and type-in localhost:3000/swagger. There you can see the list of APIs to be used. but before that you need to run migrations! check below for migration steps.
+
+
+## Migrations
+
+To run the migration files use the below commands.
 
 ```bash
-# build image
-$ docker build -t my-app .
+# using docker
+$ docker compose exec app npm run migration:run
 
-# run container from image
-$ docker run -p 3000:3000 --volume 'pwd':/usr/src/app --network --env-file .env my-app
+# run migration
+$ npm run migration:run
 
-# run using docker compose
-$ docker compose up
+# to revert any migration
+$ npm run migration:revert
 ```
-
-Learn more about Docker conventions [here](https://github.com/monstar-lab-group/nodejs-backend/blob/master/architecture/docker-ready.md). (WIP - Currently this is an internal org link.)
 
 ## Test
 
@@ -107,28 +133,11 @@ Learn more about Docker conventions [here](https://github.com/monstar-lab-group/
 # unit tests
 $ npm run test
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
+# to see the test coverage
 $ npm run test:cov
 ```
 
-## Migrations
 
-```bash
-# using docker
-$ docker compose exec app npm run migration:run
-
-# generate migration (replace CreateUsers with name of the migration)
-$ npm run migration:generate --name=CreateUsers
-
-# run migration
-$ npm run migration:run
-
-# revert migration
-$ npm run migration:revert
-```
 
 ## Architecture
 

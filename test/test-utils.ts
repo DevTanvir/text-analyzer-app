@@ -19,6 +19,7 @@ export const resetDBBeforeTest = async (): Promise<void> => {
   // All the tests will run against the e2e db due to this overwrite.
   process.env.DB_NAME = TEST_DB_NAME;
 
+  console.log('--->', TEST_DB_HOST);
   console.log(`Dropping ${TEST_DB_NAME} database and recreating it`);
   const connection = await createConnection({
     name: TEST_DB_CONNECTION_NAME,
@@ -29,7 +30,7 @@ export const resetDBBeforeTest = async (): Promise<void> => {
     password: 'example',
     database: 'postgres',
   });
-
+  
   await connection.query(`drop database if exists ${TEST_DB_NAME}`);
   await connection.query(`create database ${TEST_DB_NAME}`);
 
