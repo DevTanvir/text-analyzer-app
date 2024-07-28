@@ -1,8 +1,7 @@
 ## Text Analyzer App
 
-[![build](https://github.com/monstar-lab-oss/nestjs-starter-rest-api/actions/workflows/build-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/monstar-lab-oss/nestjs-starter-rest-api/actions/workflows/build-workflow.yml)
-[![tests](https://github.com/monstar-lab-oss/nestjs-starter-rest-api/actions/workflows/tests-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/monstar-lab-oss/nestjs-starter-rest-api/actions/workflows/tests-workflow.yml)
-[![cov](https://we-cli.github.io/jayin/badges/coverage.svg)](https://github.com/devtanvir/text-analyzer-app/actions)
+[![build](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/build-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/build-workflow.yml)
+[![tests](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/tests-workflow.yml/badge.svg?branch=master&event=push)](https://github.com/DevTanvir/text-analyzer-app/actions/workflows/tests-workflow.yml)
 
 
 For building this app I've used an open-source nestjs starter template which I directly contributed to. This is a fast and light-weight template for starting new nodejs projects with nestjs framework.
@@ -142,7 +141,9 @@ $ npm run test
 $ npm run test:cov
 ```
 
+## Test Coverage Report
 
+![Test Coverage](images/lcov-report-for-test-coverage.png)
 
 ## Architecture
 
